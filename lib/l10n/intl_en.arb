@@ -1,0 +1,8 @@
+{
+    "@@locale": "en",
+
+    "tab_home": "Home",
+    "tab_login": "Login",
+    "change_language": "Chage Lang",
+    "is_screen_name": "This is {screen_name} screen!"
+}
