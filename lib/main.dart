@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:flutter_init_app/common_utils/event_bus.dart';
 import 'package:flutter_init_app/generated/l10n.dart';
 import 'package:flutter_init_app/providers/app_provider.dart';
 import 'package:flutter_init_app/routers/application.dart';
@@ -33,6 +34,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
+    ///不知道Intl load新的locale之后为什么不刷新
+    eventBus.on<ChangeLanguageEvent>().listen((event) {
+      setState(() {});
+    });
   }
 
   @override

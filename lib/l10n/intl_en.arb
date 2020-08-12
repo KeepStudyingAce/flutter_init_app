@@ -2,7 +2,7 @@
     "@@locale": "en",
 
     "tab_home": "Home",
-    "tab_login": "Login",
+    "tab_mine": "Mine",
     "change_language": "Chage Lang",
     "is_screen_name": "This is {screen_name} screen!"
 }

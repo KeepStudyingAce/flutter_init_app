@@ -8,16 +8,23 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-          child: GestureDetector(
-        onTap: () {
-          User temp = User("Jack", 15);
-          LoginRouter.goRegistWithCallback(context, temp);
-        },
-        child: Text(S.of(context).is_screen_name("Login")),
-      )),
-    );
+    return Scaffold(
+        appBar: AppBar(
+            leading: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.close))),
+        body: Container(
+          color: Colors.white,
+          child: Center(
+              child: GestureDetector(
+            onTap: () {
+              User temp = User("Jack", 15);
+              LoginRouter.goRegistWithCallback(context, temp);
+            },
+            child: Text(S.of(context).is_screen_name("Login")),
+          )),
+        ));
   }
 }

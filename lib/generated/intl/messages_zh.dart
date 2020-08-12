@@ -26,6 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_language" : MessageLookupByLibrary.simpleMessage("修改语言"),
     "is_screen_name" : m0,
     "tab_home" : MessageLookupByLibrary.simpleMessage("首页"),
-    "tab_login" : MessageLookupByLibrary.simpleMessage("登陆")
+    "tab_mine" : MessageLookupByLibrary.simpleMessage("我的")
   };
 }

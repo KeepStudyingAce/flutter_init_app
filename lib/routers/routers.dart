@@ -2,6 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_init_app/pages/root_tab.dart';
 import 'package:flutter_init_app/pages/welcome_page.dart';
+import 'package:flutter_init_app/routers/page_routers/mine_route.dart';
 import 'page_routers/home_router.dart';
 import 'page_routers/login_router.dart';
 import 'iRouter_provider.dart';
@@ -32,6 +33,7 @@ class Routers {
     /// 各自路由由各自模块管理，统一在此添加初始化
     _listRouter.add(LoginRouter());
     _listRouter.add(HomeRouter());
+    _listRouter.add(MineRouter());
 
     /// 初始化路由
     _listRouter.forEach((routerProvider) {

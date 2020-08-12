@@ -7,15 +7,20 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: GestureDetector(
-            onTap: () {
-              HomeRouter.goSecond(context);
-            },
-            child: Text(S.of(context).is_screen_name("first"))),
-      ),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text("First页面"),
+        ),
+        body: Container(
+          color: Colors.white,
+          child: Center(
+            child: GestureDetector(
+                onTap: () {
+                  HomeRouter.goSecond(context);
+                },
+                child: Text(S.of(context).is_screen_name("first"))),
+          ),
+        ));
   }
 }

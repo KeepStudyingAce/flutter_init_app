@@ -26,6 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_language" : MessageLookupByLibrary.simpleMessage("Chage Lang"),
     "is_screen_name" : m0,
     "tab_home" : MessageLookupByLibrary.simpleMessage("Home"),
-    "tab_login" : MessageLookupByLibrary.simpleMessage("Login")
+    "tab_mine" : MessageLookupByLibrary.simpleMessage("Mine")
   };
 }

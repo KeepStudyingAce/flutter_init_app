@@ -2,7 +2,7 @@
     "@@locale": "zh",
 
     "tab_home": "首页",
-    "tab_login": "登陆",
+    "tab_mine": "我的",
     "change_language": "修改语言",
     "is_screen_name": "这是{screen_name}界面!"
 }
