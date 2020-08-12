@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_init_app/generated/l10n.dart';
+import 'package:flutter_init_app/providers/app_provider.dart';
 import 'package:flutter_init_app/routers/page_routers/home_router.dart';
+import 'package:provider/provider.dart';
 
 class Second extends StatefulWidget {
   Second({Key key}) : super(key: key);
@@ -17,15 +19,18 @@ class _SecondState extends State<Second> {
           // centerTitle: true,
           title: Text("Second页面"),
         ),
-        body: Container(
-          color: Colors.white,
-          child: Center(
-            child: GestureDetector(
-                onTap: () {
-                  HomeRouter.backToFirst(context);
-                },
-                child: Text(S.of(context).is_screen_name("Second"))),
-          ),
-        ));
+        body: Consumer<AppProvider>(builder: (context, appProvider, _) {
+          print(appProvider.locale);
+          return Container(
+            color: Colors.white,
+            child: Center(
+              child: GestureDetector(
+                  onTap: () {
+                    HomeRouter.backToFirst(context);
+                  },
+                  child: Text(S.of(context).is_screen_name("Second"))),
+            ),
+          );
+        }));
   }
 }

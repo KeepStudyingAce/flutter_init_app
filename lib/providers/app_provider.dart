@@ -22,17 +22,21 @@ class AppProvider with ChangeNotifier {
   }
 
   Locale _locale;
-  Locale get locale => _locale != null ? _locale : Locale("zh");
+  Locale get locale =>
+      _locale != null ? _locale : Locale(Intl.getCurrentLocale());
   void changeAppLanguage(BuildContext context, Locale locale) {
-    if (Intl.getCurrentLocale().contains("en")) {
+    String lang = locale.languageCode.split("_")[0];
+    if (lang == "en") {
       // 目前不区分各种英文
-      S.load(Locale("zh"));
-      eventBus.fire(ChangeLanguageEvent(Locale("zh")));
-      ToastUtil.showToast(context, "修改语言中文成功");
+      S.load(locale);
+      _locale = locale;
+      eventBus.fire(ChangeLanguageEvent(locale));
+      ToastUtil.showToast(context, "修改语言为英文成功");
     } else {
-      S.load(Locale("en"));
+      S.load(Locale("zh"));
+      _locale = Locale("zh");
       eventBus.fire(ChangeLanguageEvent(Locale("zh")));
-      ToastUtil.showToast(context, "修改语言英文成功");
+      ToastUtil.showToast(context, "修改语为中文成功");
     }
   }
 }

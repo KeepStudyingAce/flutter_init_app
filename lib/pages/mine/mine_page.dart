@@ -23,8 +23,17 @@ class MinaPage extends StatelessWidget {
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
+              Locale temp;
+              if (Provider.of<AppProvider>(context, listen: false)
+                      .locale
+                      .languageCode ==
+                  "zh") {
+                temp = Locale("en");
+              } else {
+                temp = Locale("zh");
+              }
               Provider.of<AppProvider>(context, listen: false)
-                  .changeAppLanguage(context, Locale("zh"));
+                  .changeAppLanguage(context, temp);
             },
             child: Text(S.of(context).change_language),
           ),
