@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_init_app/common_utils/event_bus.dart';
 import 'package:flutter_init_app/generated/l10n.dart';
 import 'package:flutter_init_app/providers/app_provider.dart';
 import 'package:flutter_init_app/routers/application.dart';
 import 'package:flutter_init_app/routers/routers.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_alert/easy_alert.dart';
 
@@ -14,7 +14,7 @@ void main() {
   runApp(AlertProvider(
     child: MultiProvider(
         providers: [ChangeNotifierProvider(create: (_) => AppProvider())],
-        child: MyApp()),
+        child: FlutterEasyLoading(child: MyApp())),
     config: AlertConfig(),
   ));
 }

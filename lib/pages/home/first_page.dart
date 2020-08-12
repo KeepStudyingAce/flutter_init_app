@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_init_app/common_widgets/azgo_appbar.dart';
 import 'package:flutter_init_app/generated/l10n.dart';
+import 'package:flutter_init_app/network/api.dart';
 import 'package:flutter_init_app/routers/page_routers/home_router.dart';
 
 class FirstPage extends StatelessWidget {
@@ -8,9 +10,16 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("First页面"),
+        appBar: AZGOAppBar(
+          title: "First 页面",
+          rightButtons: [
+            GestureDetector(
+              onTap: () {
+                Api.request({});
+              },
+              child: Icon(Icons.call),
+            )
+          ],
         ),
         body: Container(
           color: Colors.white,

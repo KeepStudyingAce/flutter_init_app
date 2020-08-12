@@ -14,7 +14,6 @@ class RootTab extends StatefulWidget {
 class _RootTabState extends State<RootTab> {
   @override
   Widget build(BuildContext context) {
-    print("RootTab Build");
     return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(items: [
           BottomNavigationBarItem(
