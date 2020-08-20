@@ -43,6 +43,8 @@ dependencies:
   flutter_easyloading: ^1.1.3 
   # json字符解析 https://pub.flutter-io.cn/packages/json_annotation
   json_annotation: ^3.0.1
+  # 上拉加载下拉刷新 https://pub.flutter-io.cn/packages/pull_to_refresh
+  pull_to_refresh: ^1.6.1
   flutter_localizations:
     sdk: flutter
   flutter:

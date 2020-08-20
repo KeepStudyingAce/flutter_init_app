@@ -9,6 +9,7 @@ import 'package:flutter_init_app/routers/routers.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_alert/easy_alert.dart';
+// import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 void main() {
   runApp(AlertProvider(
@@ -43,12 +44,26 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return
+        // RefreshConfiguration(
+        //     footerTriggerDistance: -15,
+        //     dragSpeedRatio: 0.91,
+        //     headerBuilder: () => MaterialClassicHeader(),
+        //     footerBuilder: () => ClassicFooter(),
+        //     enableLoadingWhenNoData: false,
+        //     shouldFooterFollowWhenNotFull: (state) {
+        //       // If you want load more with noMoreData state ,may be you should return false
+        //       return false;
+        //     },
+        //     autoLoad: true,
+        //     child:
+        MaterialApp(
       localizationsDelegates: [
         S.delegate,
         // 下面两个不配置，iOS端会报错
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        // RefreshLocalizations.delegate,
       ],
       // locale: widget.currentLocal,
       supportedLocales: S.delegate.supportedLocales,
@@ -61,7 +76,7 @@ class _MyAppState extends State<MyApp> {
       //系统切换语言时候监听
       localeResolutionCallback:
           (Locale _locale, Iterable<Locale> supportedLocales) {
-        print(_locale.languageCode + "===" + _locale.countryCode);
+        // print(_locale.languageCode + "===" + _locale.countryCode);
         Locale locale;
         if (S.delegate.isSupported(_locale)) {
           locale = _locale;
