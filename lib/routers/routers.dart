@@ -1,4 +1,4 @@
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as Fluro;
 import 'package:flutter/material.dart';
 import 'package:flutter_init_app/pages/root_tab.dart';
 import 'package:flutter_init_app/pages/welcome_page.dart';
@@ -14,16 +14,16 @@ class Routers {
 
   static List<IRouterProvider> _listRouter = [];
 
-  static void configureRoutes(Router router) {
+  static void configureRoutes(Fluro.Router router) {
     // 闪屏页面
     router.define(root,
-        handler: Handler(
+        handler: Fluro.Handler(
             handlerFunc:
                 (BuildContext context, Map<String, List<String>> params) =>
                     WelcomePage()));
     // 主页面
     router.define(homePage,
-        handler: Handler(
+        handler: Fluro.Handler(
             handlerFunc:
                 (BuildContext context, Map<String, List<String>> params) =>
                     RootTab()));

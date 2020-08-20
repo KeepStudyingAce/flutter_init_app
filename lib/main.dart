@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as Fluro;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_init_app/common_utils/event_bus.dart';
 import 'package:flutter_init_app/generated/l10n.dart';
@@ -21,7 +21,7 @@ void main() {
 
 class MyApp extends StatefulWidget {
   MyApp({Key key}) {
-    final route = Router();
+    final route = Fluro.Router();
     Application.rootRouter = route;
     Routers.configureRoutes(route);
   }

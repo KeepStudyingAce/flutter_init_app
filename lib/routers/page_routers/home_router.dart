@@ -1,4 +1,4 @@
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as Fluro;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_init_app/pages/home/first_page.dart';
 import 'package:flutter_init_app/pages/home/second_page.dart';
@@ -13,7 +13,8 @@ class HomeRouter implements IRouterProvider {
   static String secondPage = "/second";
 
   static goSecond(BuildContext context) {
-    NavigatorUtil.push(context, secondPage, transition: TransitionType.fadeIn);
+    NavigatorUtil.push(context, secondPage,
+        transition: Fluro.TransitionType.fadeIn);
   }
 
   static backToFirst(BuildContext context) {
@@ -21,15 +22,15 @@ class HomeRouter implements IRouterProvider {
   }
 
   @override
-  void initRouter(Router router) {
+  void initRouter(Fluro.Router router) {
     /// 此处设置样式TransitionType无用
     router.define(
       firstPage,
-      handler: Handler(handlerFunc: (_, params) => FirstPage()),
+      handler: Fluro.Handler(handlerFunc: (_, params) => FirstPage()),
     );
     router.define(
       secondPage,
-      handler: Handler(handlerFunc: (_, params) => Second()),
+      handler: Fluro.Handler(handlerFunc: (_, params) => Second()),
     );
   }
 }

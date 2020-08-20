@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as Fluro;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_init_app/models/user.dart';
 import 'package:flutter_init_app/pages/login/login_page.dart';
@@ -18,7 +17,7 @@ class LoginRouter implements IRouterProvider {
   static goRegist(BuildContext context, String title) {
     NavigatorUtil.push(
         context, registerPage + "?title=${Uri.encodeComponent(title)}",
-        transition: TransitionType.fadeIn);
+        transition: Fluro.TransitionType.fadeIn);
   }
 
   static goRegistWithCallback(BuildContext context, User user) {
@@ -36,7 +35,7 @@ class LoginRouter implements IRouterProvider {
           print("回调结果" + obj);
         }
       },
-      transition: TransitionType.fadeIn,
+      transition: Fluro.TransitionType.fadeIn,
     );
   }
 
@@ -47,10 +46,11 @@ class LoginRouter implements IRouterProvider {
   }
 
   @override
-  void initRouter(Router router) {
+  void initRouter(Fluro.Router router) {
     router.define(loginPage,
-        handler: Handler(handlerFunc: (_, params) => Login()));
-    router.define(registerPage, handler: Handler(handlerFunc: (_, params) {
+        handler: Fluro.Handler(handlerFunc: (_, params) => Login()));
+    router.define(registerPage,
+        handler: Fluro.Handler(handlerFunc: (_, params) {
       final String temp = params["title"].first;
       return Register(
         subTitle: temp,
