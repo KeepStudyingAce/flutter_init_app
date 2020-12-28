@@ -4,7 +4,7 @@ import 'dart:math';
 class CommonColors {
   static const Color transparent = Color(0x00000000);
   static Gradient gradient = LinearGradient(
-    List: [Color(0xFFEFDCA4), Color(0xFFDBB76B)],
+    colors: [Color(0xFFEFDCA4), Color(0xFFDBB76B)],
   );
   // 随机颜色
   static getRandomColor() {

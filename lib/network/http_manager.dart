@@ -15,6 +15,8 @@ class HttpManager {
   static const CODE_TIME_OUT = -1;
   static const CONNECT_TIMEOUT = 15000;
 
+  static CancelToken cancelToken = new CancelToken();
+
   factory HttpManager() => _instance;
 
   ///通用全局单例，第一次使用时初始化
@@ -54,7 +56,12 @@ class HttpManager {
   }
 
   ///通用的GET请求
-  get(api, {params, withLoading = true}) async {
+  get(
+    api, {
+    params,
+    withLoading = true,
+    cancelToken,
+  }) async {
     if (withLoading) {
       Loading.show();
     }
@@ -68,7 +75,11 @@ class HttpManager {
     params["sign"] = DataHelper.encryptParams(params);
 
     try {
-      response = await _dio.get(api, queryParameters: params);
+      response = await _dio.get(
+        api,
+        queryParameters: params,
+        cancelToken: cancelToken,
+      );
       if (withLoading) {
         Loading.dismiss();
       }
@@ -87,7 +98,7 @@ class HttpManager {
   }
 
   ///通用的POST请求
-  post(api, {params, withLoading = true}) async {
+  post(api, {params, withLoading = true, cancelToken}) async {
     if (withLoading) {
       Loading.show();
     }
@@ -101,7 +112,7 @@ class HttpManager {
     params["sign"] = DataHelper.encryptParams(params);
 
     try {
-      response = await _dio.post(api, data: params);
+      response = await _dio.post(api, data: params, cancelToken: cancelToken);
       if (withLoading) {
         Loading.dismiss();
       }
@@ -117,6 +128,14 @@ class HttpManager {
     }
 
     return response.data;
+  }
+
+  //取消所有cancelToken为token的请求，并表示取消原因
+  void cancelRequests({CancelToken token}) {
+    if (token == null) {
+      token = cancelToken;
+    }
+    token.cancel("cancelled");
   }
 }
 
