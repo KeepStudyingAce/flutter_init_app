@@ -33,7 +33,7 @@ class _RegisterState extends State<Register> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(S.of(context).is_screen_name("注册")),
+                    Text(AppIntl.of(context).is_screen_name("注册")),
                     Text("姓名: ${user.nickName}"),
                     Text("年龄: ${user.age}"),
                   ]),

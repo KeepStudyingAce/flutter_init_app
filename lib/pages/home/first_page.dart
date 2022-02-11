@@ -97,7 +97,7 @@ class _FirstPageState extends State<FirstPage> {
                     onTap: () {
                       HomeRouter.goSecond(context);
                     },
-                    child: Text(S.of(context).is_screen_name("first"))),
+                    child: Text(AppIntl.of(context).is_screen_name("first"))),
               ),
             )));
   }

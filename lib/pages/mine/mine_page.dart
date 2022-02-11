@@ -35,7 +35,7 @@ class MinaPage extends StatelessWidget {
               Provider.of<AppProvider>(context, listen: false)
                   .changeAppLanguage(context, temp);
             },
-            child: Text(S.of(context).change_language),
+            child: Text(AppIntl.of(context).change_language),
           ),
         ],
       ),

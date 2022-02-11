@@ -144,10 +144,10 @@ ResultData resultError(DioError e) {
   if (e.response != null) {
     errorResponse = e.response;
   } else {
-    errorResponse = new Response(statusCode: 666);
+    return new ResultData(e.message, false, Code.FAIL);
   }
-  if (e.type == DioErrorType.CONNECT_TIMEOUT ||
-      e.type == DioErrorType.RECEIVE_TIMEOUT) {
+  if (e.type == DioErrorType.connectTimeout ||
+      e.type == DioErrorType.receiveTimeout) {
     errorResponse.statusCode = Code.NETWORK_TIMEOUT;
   }
   return new ResultData(

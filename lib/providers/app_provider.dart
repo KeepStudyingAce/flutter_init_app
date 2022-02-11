@@ -28,12 +28,12 @@ class AppProvider with ChangeNotifier {
     String lang = locale.languageCode.split("_")[0];
     if (lang == "en") {
       // 目前不区分各种英文
-      S.load(locale);
+      AppIntl.load(locale);
       _locale = locale;
       eventBus.fire(ChangeLanguageEvent(locale));
       ToastUtil.showToast(context, "修改语言为英文成功");
     } else {
-      S.load(Locale("zh"));
+      AppIntl.load(Locale("zh"));
       _locale = Locale("zh");
       eventBus.fire(ChangeLanguageEvent(Locale("zh")));
       ToastUtil.showToast(context, "修改语为中文成功");

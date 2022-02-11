@@ -59,14 +59,14 @@ class _MyAppState extends State<MyApp> {
         //     child:
         MaterialApp(
       localizationsDelegates: [
-        S.delegate,
+        AppIntl.delegate,
         // 下面两个不配置，iOS端会报错
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         // RefreshLocalizations.delegate,
       ],
       // locale: widget.currentLocal,
-      supportedLocales: S.delegate.supportedLocales,
+      supportedLocales: AppIntl.delegate.supportedLocales,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -78,13 +78,13 @@ class _MyAppState extends State<MyApp> {
           (Locale _locale, Iterable<Locale> supportedLocales) {
         // print(_locale.languageCode + "===" + _locale.countryCode);
         Locale locale;
-        if (S.delegate.isSupported(_locale)) {
+        if (AppIntl.delegate.isSupported(_locale)) {
           locale = _locale;
         } else {
           // 默认中文
           locale = Locale("zh", 'CH');
         }
-        S.load(locale);
+        AppIntl.load(locale);
         return locale;
       },
     );

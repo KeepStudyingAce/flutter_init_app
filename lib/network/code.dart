@@ -10,6 +10,7 @@ class Code {
   static const NETWORK_JSON_EXCEPTION = -3;
 
   static const SUCCESS = 200;
+  static const FAIL = 0;
 
   static errorHandleFunction(code, message, noTip) {
     if (noTip) {

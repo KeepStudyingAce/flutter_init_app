@@ -1,14 +1,21 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_init_app/network/code.dart';
 import 'result_data.dart';
 
 /// 数据初步处理
 class ResponseInterceptors extends InterceptorsWrapper {
   @override
-  onResponse(Response response) async {
-    RequestOptions option = response.request;
+  onResponse(Response response, ResponseInterceptorHandler handler) {
+    RequestOptions option = response.requestOptions;
+    Response result = response;
     try {
       if (option.contentType != null && option.contentType.contains("text")) {
-        return new ResultData(response.data, true, 200);
+        result.data = ResultData(
+          response.data["data"],
+          true,
+          Code.SUCCESS,
+          headers: response.headers,
+        );
       }
 
       ///一般只需要处理200的情况，300、400、500保留错误信息，外层为http协议定义的响应码
@@ -17,21 +24,20 @@ class ResponseInterceptors extends InterceptorsWrapper {
 
         int code = response.data["code"];
         if (code == 0) {
-          return new ResultData(response.data, true, 200,
-              headers: response.headers);
+          result.data =
+              ResultData(response.data, true, 200, headers: response.headers);
         } else {
-          return new ResultData(response.data, false, 200,
-              headers: response.headers);
+          result.data =
+              ResultData(response.data, false, 200, headers: response.headers);
         }
       }
     } catch (e) {
       print("ResponseError====" + e.toString() + "****" + option.path);
 
-      return new ResultData(response.data, false, response.statusCode,
+      result.data = ResultData(response.data, false, response.statusCode,
           headers: response.headers);
     }
 
-    return new ResultData(response.data, false, response.statusCode,
-        headers: response.headers);
+    handler.next(result);
   }
 }

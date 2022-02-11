@@ -17,9 +17,9 @@ class _RootTabState extends State<RootTab> {
     return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(items: [
           BottomNavigationBarItem(
-              title: Text(S.of(context).tab_home), icon: Icon(Icons.home)),
+              title: Text(AppIntl.of(context).tab_home), icon: Icon(Icons.home)),
           BottomNavigationBarItem(
-              title: Text(S.of(context).tab_mine), icon: Icon(Icons.info)),
+              title: Text(AppIntl.of(context).tab_mine), icon: Icon(Icons.info)),
         ]),
         tabBuilder: (context, index) {
           switch (index) {

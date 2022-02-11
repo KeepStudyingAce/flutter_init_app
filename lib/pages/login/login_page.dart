@@ -23,7 +23,7 @@ class Login extends StatelessWidget {
               User temp = User("Jack", 15);
               LoginRouter.goRegistWithCallback(context, temp);
             },
-            child: Text(S.of(context).is_screen_name("Login")),
+            child: Text(AppIntl.of(context).is_screen_name("Login")),
           )),
         ));
   }
